@@ -1,0 +1,40 @@
+server:
+   port: 9004
+   error:
+      include-stacktrace: ON_PARAM
+      include-message: always
+   
+spring:
+   h2:
+      console:
+         enabled: true
+   datasource:
+      url: jdbc:h2:mem:bookingdb
+      driverClassName: org.h2.Driver
+      username: nc
+      password:
+   jpa:
+      database-platform: org.hibernate.dialect.H2Dialect
+      show-sql: true
+      properties:
+         hibernate:
+            format-sql: true
+   jackson:
+      serialization:
+         fail-on-empty-beans: false
+   kafka:
+      consumer:
+         bootstrap-servers: localhost:9092
+         group-id: group1
+         auto-offset-reset: latest
+         key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+         value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+         properties:
+            spring.json.value.default.type: com.ticket.bookingservice.domain.KafkaMessage
+      producer:
+         bootstrap-servers: localhost:9092
+         key-serializer: org.apache.kafka.common.serialization.StringSerializer
+         value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+         properties:
+            spring.json.add.type.headers: false
+
