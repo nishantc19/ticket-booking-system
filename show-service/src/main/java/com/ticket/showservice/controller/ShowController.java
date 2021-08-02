@@ -18,12 +18,12 @@ import com.ticket.showservice.domain.Show;
 import com.ticket.showservice.service.ShowService;
 import com.ticket.showservice.validation.ShowValidator;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/show")
 @Validated
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ShowController {
 	
 	private final ShowService showService;

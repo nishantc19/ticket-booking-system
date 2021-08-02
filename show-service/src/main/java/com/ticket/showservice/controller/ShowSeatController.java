@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ticket.showservice.domain.Status;
 import com.ticket.showservice.service.ShowSeatService;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/showseat")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ShowSeatController {
 	
 	final ShowSeatService seatService;
