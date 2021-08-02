@@ -1,6 +1,5 @@
 package com.ticket.showservice.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,18 +9,20 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ticket.showservice.domain.Status;
 import com.ticket.showservice.service.ShowSeatService;
 
+import lombok.AllArgsConstructor;
+
 @RestController
 @RequestMapping("/showseat")
+@AllArgsConstructor
 public class ShowSeatController {
 	
-	@Autowired
-	ShowSeatService seatService;
+	final ShowSeatService seatService;
 	
 	@PatchMapping("/{id}/status")
 	public String updateSeat(
-			@PathVariable Long id,
-			@RequestParam("version") Integer version,
-			@RequestParam("status") Status status) {
+			@PathVariable final Long id,
+			@RequestParam("version") final Integer version,
+			@RequestParam("status") final Status status) {
 		return seatService.reserveShowSeat(id, version, status);
 	}
 }

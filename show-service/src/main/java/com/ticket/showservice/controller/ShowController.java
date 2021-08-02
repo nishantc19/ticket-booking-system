@@ -2,7 +2,6 @@ package com.ticket.showservice.controller;
 
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
@@ -19,31 +18,32 @@ import com.ticket.showservice.domain.Show;
 import com.ticket.showservice.service.ShowService;
 import com.ticket.showservice.validation.ShowValidator;
 
+import lombok.AllArgsConstructor;
+
 @RestController
 @RequestMapping("/show")
 @Validated
+@AllArgsConstructor
 public class ShowController {
 	
-	@Autowired
-	private ShowService showService;
+	private final ShowService showService;
 	
-	@Autowired
-	private ShowValidator showValidator;
+	private final ShowValidator showValidator;
 	
 	@PostMapping("/")
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public Show createShow(@RequestBody @Valid Show show) {
+	public Show createShow(@RequestBody @Valid final Show show) {
 		return showService.createShow(show);
 	}
 	
 	@GetMapping("/{id}")
 	@ResponseStatus(value = HttpStatus.FOUND)
-	public Show getShowDetails(@PathVariable Long id) {
+	public Show getShowDetails(@PathVariable final Long id) {
 		return showService.getShowDetails(id);
 	}
 	
 	@InitBinder
-	private void initBinder(WebDataBinder binder) {
+	private void initBinder(final WebDataBinder binder) {
 		binder.setValidator(showValidator);
 	}
 

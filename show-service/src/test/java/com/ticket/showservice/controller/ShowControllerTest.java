@@ -58,7 +58,7 @@ public class ShowControllerTest {
 		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/show/")
 				.contentType(MediaType.APPLICATION_JSON)
 				.accept(MediaType.APPLICATION_JSON)
-				.content(this.objectMapper.writeValueAsString(show));
+				.content(objectMapper.writeValueAsString(show));
 		mockMvc.perform(mockRequest)
 			.andExpect(status().isCreated())
 			.andExpect(jsonPath("$", notNullValue()))

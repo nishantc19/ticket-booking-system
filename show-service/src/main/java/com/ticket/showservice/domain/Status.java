@@ -15,7 +15,7 @@ public enum Status {
 	CONFIRMED;
 	
 	@JsonCreator
-	public static Status deSerialize(String value) {
+	public static Status deSerialize(final String value) {
 		return new StatusConverter().convert(value);
 	}
 	
@@ -28,7 +28,7 @@ public enum Status {
 	private static class StatusConverter implements Converter<String, Status>{
 		
 		@Override
-		public Status convert(String value) {
+		public Status convert(final String value) {
 			return Arrays.stream(Status.values())
 					.filter(itr -> itr.toString().equalsIgnoreCase(value))
 					.findFirst()
