@@ -11,7 +11,7 @@ This is a snippet of movie ticket booking system which focuses on booking a seat
 
 ## Prerequisites
 
-This project requires basic understanding of how Java Spring boot API service works and how to build a Java web-applications using Maven. Since Kafka is the certer piece, theoritical knowledge is a must. Also, you should know how to clone a git repository on your local.
+This project requires basic understanding of how Java Spring boot API service works and how to build Java a web-app using Maven. Since Kafka is the certer piece, theoritical knowledge is a must. Also, you should know how to clone a git repository on your local.
 
 I have used [cURL](https://developer.ibm.com/articles/what-is-curl-command/) for talking with the services. You can also use Postman or other similar tools.
 
