@@ -17,10 +17,8 @@ import com.ticket.showservice.repository.ShowSeatRepository;
 import com.ticket.showservice.util.UniqueIdGenerator;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 @Service
-@Slf4j
 @RequiredArgsConstructor
 public class ShowSeatService {
 	
@@ -58,9 +56,7 @@ public class ShowSeatService {
 	}
 	
 	private BookingMessage createBookingMessage(final ShowMessage kafkaMessage) {
-		log.info(">>>>>Getting show seat by uniqueId");
 		final List<ShowSeat> showSeats = listShowSeatByUniqueId(kafkaMessage.getUniqueId());
-		log.info("<<<<<Got show seat by uniqueId");
 		final Show showDetails = showSeats.get(0).getShow();
 		final List<Long> seatIds = showSeats.stream().map(ShowSeat::getSeatId).collect(Collectors.toList());
 		final BookingMessage message = new BookingMessage();
@@ -71,7 +67,6 @@ public class ShowSeatService {
 		message.setMovieName(showDetails.getMovieName());
 		message.setShowDate(showDetails.getStartTimestamp().toLocalDate());
 		message.setShowStartTime(showDetails.getStartTimestamp().toLocalTime());
-		log.info("Booking message created: "+message.toString());
 		return message;
 	}
 }
