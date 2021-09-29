@@ -15,7 +15,6 @@ import com.ticket.showservice.domain.Status;
 
 public interface ShowSeatRepository extends JpaRepository<ShowSeat, Long> {
 	
-	@Transactional
 	@Modifying(flushAutomatically = true)
 	@Query("Update ShowSeat seat set seat.status= :status, seat.version= (:version + 1), seat.uniqueId= :uuid where seat.showSeatId = :id and seat.version= :version")
 	Integer updateShowSeatStatus(@Param("id") Long id, @Param("version") Integer version, @Param("status") Status status, @Param("uuid") String uuid);

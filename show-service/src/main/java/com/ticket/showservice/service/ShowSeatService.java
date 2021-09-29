@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Service;
 
 import com.ticket.showservice.exception.AlreadyModifiedException;
@@ -28,6 +30,7 @@ public class ShowSeatService {
 	
 	private final UniqueIdGenerator uniqueIdGenerator;
 	
+	@Transactional
 	public String reserveShowSeat(final Long showSeatId, final Integer version, final Status status) {
 		final String uuid = uniqueIdGenerator.generateUniqueId();
 		Integer rowsUpdated = seatRepository.updateShowSeatStatus(showSeatId, version, status, uuid);
