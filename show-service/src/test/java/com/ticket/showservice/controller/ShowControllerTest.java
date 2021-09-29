@@ -40,16 +40,16 @@ public class ShowControllerTest {
 	ShowValidator showValidator;
 	
 	@Test
-	public void createShow_success() throws Exception {
-		ShowSeat seat = new ShowSeat();
+	public void shouldCreateShowSuccessfully() throws Exception {
+		final ShowSeat seat = new ShowSeat();
 		seat.setSeatId(1L);
 		seat.setPrice(new BigDecimal(350.00));
 		seat.setStatus(Status.AVAILABLE);
 		seat.setVersion(0);
-		List<ShowSeat> seats = new ArrayList<ShowSeat>();
+		final List<ShowSeat> seats = new ArrayList<ShowSeat>();
 		seats.add(seat);
-		Show show = new Show();
-		show.setMovieName("Tere Naam");
+		final Show show = new Show();
+		show.setMovieName("Pirates of the caribbean: Dead man tell no tales");
 		show.setStartTimestamp(LocalDateTime.parse("2021-08-04T10:10:00"));
 		show.setEndTimestamp(LocalDateTime.parse("2021-08-04T13:10:00"));
 		show.setSeats(seats);
